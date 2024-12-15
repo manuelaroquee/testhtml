@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Stars</title>
+    <style>
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star {
+            color: lightgray;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label,
+        .star-rating input[type="radio"]:checked ~ label ~ label {
+            color: gold;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5" class="star">&#9733;</label>
+
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4" class="star">&#9733;</label>
+
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3" class="star">&#9733;</label>
+
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2" class="star">&#9733;</label>
+
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1" class="star">&#9733;</label>
+    </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star-rating input');
+
+        stars.forEach(star => {
+            star.addEventListener('change', () => {
+                console.log(`Você avaliou com ${star.value} estrelas.`);
+            });
+        });
+    </script>
+</body>
+</html>
